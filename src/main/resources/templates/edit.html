@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact Detail</title>
+</head>
+<body>
+	<h2>Contact Details</h2>
+	<form th:action="@{/contacts/${contact.id}}" th:object="${contact}" method="post">
+		<table>
+			<tr>
+				<td colspan="2"><input type="hidden" th:field="*{id}"></td>
+			</tr>
+			<tr>
+				<td>Name*</td>
+				<td><input th:field="*{name}"></td>
+				<td><p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:class="text-red"></p></td>
+			</tr>
+			<tr>
+				<td>Email*</td>
+				<td><input th:field="*{email}"></td>
+				<td><p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="text-red"></p></td>
+			</tr>
+			<tr>
+				<td>Phone Number*</td>
+				<td><input th:field="*{phoneNumber}"></td>
+				<td><p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" th:class="text-red"></p></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td colspan="2"><input th:field="*{dateOfBirth}"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="update"></td>
+				<td><a href="/contacts">Cancel</a></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

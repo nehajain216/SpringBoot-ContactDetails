@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Contact Details</title>
+</head>
+<body>
+	<h2>Contact Details</h2>
+	<div>
+		<table>
+			<tr>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Phone Number</td>
+				<td>Date Of Birth</td>
+				<td><a th:href="@{/contacts/new}">New Contact</a></td>
+			</tr>
+			<tr th:each="contact: ${contacts}">
+				<td th:text="${contact.name}">Name</td>
+				<td th:text="${contact.email}">Email</td>
+				<td th:text="${contact.phoneNumber}">PhoneNumber</td>
+				<td th:text="${#dates.format(contact.dateOfBirth, 'dd-MMM-yyyy')}">DateOfBirth</td>
+				<td><a th:href="@{'/contacts/'+${contact.id}+'/edit'}">Edit</a></td>
+				<td><a th:href="@{'/contacts/'+${contact.id}}">View</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

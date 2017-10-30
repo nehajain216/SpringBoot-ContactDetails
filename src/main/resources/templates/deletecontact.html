@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact Detail</title>
+</head>
+<body>
+	<h2>Contact Details</h2>
+	
+		<table>
+			<tr>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td th:text="${contact.name}"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td th:text="${contact.email}"></td>
+			</tr>
+			<tr>
+				<td>Phone Number</td>
+				<td th:text="${contact.phoneNumber}"></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td th:text="${contact.dateOfBirth}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<form th:action="@{'/contacts/'+${contact.id}+'/delete'}" method="post">
+						<input type="submit" value="Delete" onClick="return confirm('Are you sure you want to delete ?')">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="/contacts">Cancel</a></td>
+			</tr>
+		</table>
+</body>
+</html>
